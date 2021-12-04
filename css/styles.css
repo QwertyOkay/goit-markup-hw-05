@@ -142,6 +142,20 @@ align-items: center;
   color: var(--header-text-color);
 }
 
+.current::after {
+  content: '';
+
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px; 
+}
+
 .header-link.current {
   color: var(--accent-color);
 }
@@ -157,6 +171,13 @@ align-items: center;
   transition-property: color;
   transition-duration: var(--duration);
   transition-timing-function: var(--function);
+}
+
+.navigation-item > .link {
+  display: block;
+  position: relative;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .header-contacts:hover {
@@ -371,6 +392,9 @@ align-items: center;
   letter-spacing: 0.06em;
   color: var(--main-title-color);
   background-color: var(--header-text-color);
+  transition-property: background-color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--function);
 }
 
 .main-section-btn:hover {
@@ -379,6 +403,12 @@ align-items: center;
 }
 .main-section-btn:focus {
   color: var(--main-title-color);
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--accent-color);
+  box-shadow: 0px 3px 1px rgb(0 0 0 / 10%), 0px 1px 2px rgb(0 0 0 / 8%), 0px 2px 2px rgb(0 0 0 / 12%);
 }
 
 .portfolio-button {
