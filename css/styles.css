@@ -6,6 +6,7 @@
   --third-text-color: #000000;
   --header-text-color: #2196f3;
   --accent-color: #2196f3;
+  --btn-accent-color: #188ce8;
   --main-site-section: #2f303a;
   --ourteam-section: #f5f4fa;
   --border-header-color: #ececec;
@@ -21,6 +22,7 @@
   --duration: 250ms;
   --function: cubic-bezier(0.4, 0, 0.2, 1);
   --about-text-bgc: rgba(47, 48, 58, 0.8);
+  --overlay-card-color: rgba(33, 150, 243, 0.9);
 }
 
 html {
@@ -283,19 +285,20 @@ align-items: center;
   transition-property: visibility;
   transition-duration: var(--duration);
   transition-timing-function: var(--function);
+  opacity: 1;
+  transition: opacity 250ms var(--function); 
 }
 
 
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
-/* .modal.is-hidden {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.5);
-} */
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(2.9);
+}
 
 .modal {
   position: absolute;
@@ -314,6 +317,11 @@ align-items: center;
   transition-duration: var(--duration);
   transition-timing-function: var(--function);
 }
+
+/* .modal.is-hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+} */
 
 .close {
     display: flex;
@@ -958,6 +966,17 @@ margin-left: 0;
   flex-basis: calc(100% / 3 - var(--card-set-gap));
   margin-top: var(--card-set-gap);
   margin-left: var(--card-set-gap);
+
+  transition-property: box-shadow;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--function);
+}
+
+.portfolio-list-item:hover .overlay,
+.portfolio-list-item:focus .overlay,
+.portfolio-list-item:focus-within .overlay {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .services {
@@ -994,4 +1013,54 @@ margin-left: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.card-aside {
+  position: relative;
+  height: 294px;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  align-items: center;
+  width: 100%;
+  height: 294px;
+  background-color: var(--overlay-card-color);
+  
+  transform: translateY(101%);
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--function);
+  overflow-y: auto;
+}
+
+.overlay::-webkit-scrollbar {
+  width: 10px;
+}
+
+.overlay::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--first-text-color);
+  border-radius: 10px;
+}
+
+.overlay::-webkit-scrollbar-thumb {
+  background: var(--btn-accent-color);
+  border-radius: 10px;
+}
+
+.overlay::-webkit-scrollbar-thumb:hover {
+  background: var(--first-text-color);
+}
+
+.overlay-text {
+  margin: 0;
+  padding: 63px 24px;
+  color: var(--main-title-color);
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  text-align: left;
 }
