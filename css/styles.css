@@ -364,7 +364,7 @@ align-items: center;
 }
 
 .ourteam-content {
-  padding: 30px 0;
+  padding: 30px 32px;
 }
 
 .ourteam-content:last-child {
@@ -644,7 +644,7 @@ align-items: center;
 .team-icon-list {
   display: flex;
   justify-content: center;
-  padding: 0 32px;
+  /* padding: 0 32px; */
 }
 
 .team-icon {
